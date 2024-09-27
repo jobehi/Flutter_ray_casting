@@ -65,14 +65,14 @@ class LevelBuilder {
   }
 }
 
-class RayTracingWidget extends StatefulWidget {
-  const RayTracingWidget({super.key});
+class BasicRayTracingWidget extends StatefulWidget {
+  const BasicRayTracingWidget({super.key});
 
   @override
   RayTracingWidgetState createState() => RayTracingWidgetState();
 }
 
-class RayTracingWidgetState extends State<RayTracingWidget> {
+class RayTracingWidgetState extends State<BasicRayTracingWidget> {
   late double screenWidth;
   late double screenHeight;
 

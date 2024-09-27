@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ray_something/ray_tracing/main_ray_tracing_page.dart';
 
-import 'ray_casting/ray_casting_page.dart';
-
-import 'ray_tracing/basic/basic_ray_tracing_page.dart';
 import 'steps_explanation/steps_explanation_screen.dart';
 
 void main() {
@@ -14,14 +12,9 @@ class RayTracingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Ray Tracing Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Painting loves Math'),
-        ),
-        body: const HomeScreen(),
-      ),
+      home: HomeScreen(),
     );
   }
 }
@@ -36,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final pages = const [
     StepsExplanationScreen(),
-    RayTracingWidget(),
+    MainRayTracingPage(),
   ];
 
   int _selectedIndex = 0;
