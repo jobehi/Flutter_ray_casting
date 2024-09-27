@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ray_something/ray_tracing/main_ray_tracing_page.dart';
 
-import 'steps_explanation/steps_explanation_screen.dart';
+import 'ray_tracing_steps/steps_explanation_Screen.dart';
 
 void main() {
   runApp(const RayTracingApp());
