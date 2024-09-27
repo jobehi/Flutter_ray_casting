@@ -1,4 +1,4 @@
-package com.example.maze_game
+package com.example.ray_something
 
 import io.flutter.embedding.android.FlutterActivity
 
