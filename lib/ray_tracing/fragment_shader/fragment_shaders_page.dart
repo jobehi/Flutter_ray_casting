@@ -9,46 +9,69 @@ class FragmentShadersPage extends StatefulWidget {
   State<FragmentShadersPage> createState() => _FragmentShadersPageState();
 }
 
-class _FragmentShadersPageState extends State<FragmentShadersPage> {
-  bool isLoading = true;
+class _FragmentShadersPageState extends State<FragmentShadersPage>
+    with TickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 1),
+    vsync: this,
+  )..repeat();
+
+  int _startTime = 0;
+  double get _elapsedTimeInSeconds =>
+      (_startTime - DateTime.now().millisecondsSinceEpoch) / 1000;
+
   @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   Future<FragmentShader> _loadShaderFrag() async {
     FragmentProgram program =
         await FragmentProgram.fromAsset('shaders/ray_tracer.frag');
-    setState(() {
-      isLoading = false;
-    });
+
     return program.fragmentShader();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fragment Shaders'),
-      ),
-      body: Center(
+        appBar: AppBar(
+          title: const Text('Fragment Shaders'),
+        ),
+        body: Center(
           child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: FutureBuilder<FragmentShader>(
-            future: _loadShaderFrag(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                final shader = snapshot.data!;
-                return CustomPaint(
-                  painter: ShaderPainter(shader),
-                );
-              } else {
-                return const CircularProgressIndicator();
-              }
-            }),
-      )),
-    );
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: FutureBuilder<FragmentShader>(
+                future: _loadShaderFrag(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final shader = snapshot.data!;
+                    shader.setFloat(
+                        1, MediaQuery.of(context).size.width); //width
+                    shader.setFloat(
+                        2, MediaQuery.of(context).size.height); //heigh
+                    _startTime = DateTime.now().millisecondsSinceEpoch;
+                    return AnimatedBuilder(
+                        animation: _controller,
+                        builder: (context, _) {
+                          shader.setFloat(0, _elapsedTimeInSeconds);
+                          return CustomPaint(
+                            painter: ShaderPainter(shader),
+                          );
+                        });
+                  } else {
+                    return const CircularProgressIndicator();
+                  }
+                }),
+          ),
+        ));
   }
 }
 
@@ -66,7 +89,7 @@ class ShaderPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(ShaderPainter oldDelegate) {
-    return oldDelegate.shader != shader;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return oldDelegate != this;
   }
 }
