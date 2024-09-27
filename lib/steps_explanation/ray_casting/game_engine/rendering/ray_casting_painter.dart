@@ -3,10 +3,11 @@ import 'dart:ui';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:ray_something/ray_casting/game_engine/models/bullet.dart';
-import 'package:ray_something/ray_casting/game_engine/models/enemy.dart';
-import 'package:ray_something/ray_casting/game_engine/models/explosion.dart';
-import 'package:ray_something/ray_casting/game_engine/models/player.dart';
+
+import '../models/bullet.dart';
+import '../models/enemy.dart';
+import '../models/explosion.dart';
+import '../models/player.dart';
 
 class RayCastingPainter extends CustomPainter {
   final List<List<int>> map;

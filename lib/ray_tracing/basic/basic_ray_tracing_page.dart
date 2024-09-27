@@ -3,8 +3,8 @@ import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:ray_something/ray_casting/game_engine/models/player.dart';
-import 'package:ray_something/ray_casting/widgets/mini_map.dart';
+import 'package:ray_something/steps_explanation/ray_casting/game_engine/models/player.dart';
+import 'package:ray_something/steps_explanation/ray_casting/widgets/mini_map.dart';
 
 import 'data/level.dart';
 import 'models/3d/camera.dart';
