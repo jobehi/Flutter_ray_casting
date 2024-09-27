@@ -132,26 +132,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                Text('Reduce Resolution: $lowResMultiplier'),
-                Slider(
-                  value: lowResMultiplier.toDouble(),
-                  min: 1,
-                  max: 10,
-                  divisions: 9,
-                  label: lowResMultiplier.toString(),
-                  onChanged: (value) {
-                    setState(() {
-                      lowResMultiplier = value.toInt();
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
@@ -205,6 +185,26 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
             ),
           ),
           const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              children: [
+                Text('Reduce Resolution: $lowResMultiplier'),
+                Slider(
+                  value: lowResMultiplier.toDouble(),
+                  min: 1,
+                  max: 10,
+                  divisions: 9,
+                  label: lowResMultiplier.toString(),
+                  onChanged: (value) {
+                    setState(() {
+                      lowResMultiplier = value.toInt();
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
           Column(
             children: [
               Padding(
