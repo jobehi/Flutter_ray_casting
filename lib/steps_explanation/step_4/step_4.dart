@@ -177,8 +177,8 @@ class MapPainter extends CustomPainter {
     canvas.drawCircle(playerPosition, 5, Paint()..color = Colors.blue);
 
     // Cast rays
-    final numRays = 20;
-    final fov = pi / 3; // 60 degrees field of view
+    const numRays = 20;
+    const fov = pi / 3; // 60 degrees field of view
     final startAngle = playerAngle - fov / 2;
 
     for (int i = 0; i < numRays; i++) {
