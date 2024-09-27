@@ -3,8 +3,6 @@ import 'dart:math';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:ray_something/ray_tracing_steps/ray_casting/game_engine/models/player.dart';
-import 'package:ray_something/ray_tracing_steps/ray_casting/widgets/mini_map.dart';
 
 import 'data/level.dart';
 import 'models/3d/camera.dart';
@@ -129,13 +127,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
     super.dispose();
   }
 
-  // Function to trigger image rendering with debounce
-  void onChange() {
-    setState(() {});
-  }
-
-  // Function to handle dragging of the light source
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -156,7 +147,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
                     setState(() {
                       lowResMultiplier = value.toInt();
                     });
-                    onChange(); // Debounced renderImage call
                   },
                 ),
               ],
@@ -215,21 +205,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
             ),
           ),
           const SizedBox(height: 20),
-          Minimap(
-              map: levelMap.map((e) {
-                return e.map((e) {
-                  if (e == ThreeDObject.cube) {
-                    return 1;
-                  }
-
-                  return 0;
-                }).toList();
-              }).toList(),
-              player: Player(
-                  x: camera.position.x,
-                  y: camera.position.z,
-                  angle: camera.horizontalTiltAngle),
-              enemies: const []),
           Column(
             children: [
               Padding(
@@ -249,7 +224,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
                           /// update the camera tilt
                           camera = camera.copyWith(verticalIiltAngle: value);
                         });
-                        onChange(); // Debounced renderImage call
                       },
                     ),
                   ],
@@ -271,7 +245,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
                         setState(() {
                           lightPosX = value;
                         });
-                        onChange(); // Debounced renderImage call
                       },
                     ),
                   ],
@@ -298,7 +271,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
                         setState(() {
                           lightPosZ = value;
                         });
-                        onChange(); // Debounced renderImage call
                       },
                     ),
                   ],
@@ -321,7 +293,6 @@ class RayTracingWidgetState extends State<BasicRayTracingWidget> {
                         setState(() {
                           lightIntensity = value;
                         });
-                        onChange(); // Debounced renderImage call
                       },
                     ),
                   ],
