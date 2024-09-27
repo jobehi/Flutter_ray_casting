@@ -1,4 +1,4 @@
-import '../ray_tracing_page.dart';
+import '../basic_ray_tracing_page.dart';
 
 class Level {
   static const level1 = [

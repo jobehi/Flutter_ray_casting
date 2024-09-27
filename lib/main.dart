@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'ray_casting/ray_casting_page.dart';
 
-import 'ray_tracing/ray_tracing_page.dart';
+import 'ray_tracing/basic_ray_tracing_page.dart';
 import 'steps_explanation/steps_explanation_screen.dart';
 
 void main() {
