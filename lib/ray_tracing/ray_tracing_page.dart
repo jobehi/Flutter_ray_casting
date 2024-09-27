@@ -85,7 +85,7 @@ class RayTracingWidgetState extends State<RayTracingWidget> {
   double lightPosZ = -10.0;
   double lightIntensity = 0.5;
   double cameraTilt = 0;
-  int lowResMultiplier = 1;
+  int lowResMultiplier = 8;
 
   // Debounce timer
   Timer? _debounce;
@@ -117,9 +117,10 @@ class RayTracingWidgetState extends State<RayTracingWidget> {
 
   @override
   void didChangeDependencies() {
+    final size = MediaQuery.of(context).size;
     super.didChangeDependencies();
-    screenWidth = 300;
-    screenHeight = 300;
+    screenWidth = size.width;
+    screenHeight = size.width;
   }
 
   @override
