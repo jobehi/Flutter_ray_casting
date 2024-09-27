@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ray_something/ray_casting/ray_casting_page.dart';
 import 'package:ray_something/steps_explanation/step_4/step_4.dart';
 
 import 'step_1/step_one.dart';
@@ -15,7 +16,14 @@ class StepsExplanationScreen extends StatefulWidget {
 
 class _StepsExplanationScreenState extends State<StepsExplanationScreen> {
   int currentPage = 0;
-  final stepsScreens = const [Step1(), Step2(), Step3(), Step4(), Step6()];
+  final stepsScreens = const [
+    Step1(),
+    Step2(),
+    Step3(),
+    Step4(),
+    Step6(),
+    MazeGamePage()
+  ];
 
   PageController pageController = PageController();
 

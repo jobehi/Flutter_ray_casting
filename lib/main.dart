@@ -36,7 +36,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final pages = const [
     StepsExplanationScreen(),
-    MazeGamePage(),
     RayTracingWidget(),
   ];
 
@@ -52,11 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.accessibility_new),
-            label: 'Steps Explanation',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.access_alarm),
+            icon: Icon(Icons.remove_red_eye),
             label: 'Ray Casting',
           ),
           BottomNavigationBarItem(
