@@ -2,6 +2,9 @@
 
 A Flutter experiment implementing ray casting and ray tracing using pure Dart code. This project utilizes CustomPaint to render scenes and demonstrates the progression from basic 2D ray casting to a Doom-like 3D projection.
 
+## Try it out
+You can try the web version of the project [here](https://ray-trace-flutter.web.app/).
+
 ## Screenshots
 
 ![Ray Casting](readme_screenshots/ray_casting.png)
