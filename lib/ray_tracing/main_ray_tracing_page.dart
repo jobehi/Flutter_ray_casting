@@ -57,6 +57,7 @@ class _MainRayTracingPageState extends State<MainRayTracingPage> {
           ),
           Expanded(
             child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: pageViewControllers,
               children: pages,
             ),

@@ -58,14 +58,20 @@ class _FragmentShadersPageState extends State<FragmentShadersPage>
                     shader.setFloat(
                         2, MediaQuery.of(context).size.height); //heigh
                     _startTime = DateTime.now().millisecondsSinceEpoch;
-                    return AnimatedBuilder(
-                        animation: _controller,
-                        builder: (context, _) {
-                          shader.setFloat(0, _elapsedTimeInSeconds);
-                          return CustomPaint(
-                            painter: ShaderPainter(shader),
-                          );
-                        });
+                    return GestureDetector(
+                      onPanUpdate: (details) {
+                        shader.setFloat(3, details.localPosition.dx);
+                        shader.setFloat(4, details.localPosition.dy);
+                      },
+                      child: AnimatedBuilder(
+                          animation: _controller,
+                          builder: (context, _) {
+                            shader.setFloat(0, _elapsedTimeInSeconds);
+                            return CustomPaint(
+                              painter: ShaderPainter(shader),
+                            );
+                          }),
+                    );
                   } else {
                     return const CircularProgressIndicator();
                   }
